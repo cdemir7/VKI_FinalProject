@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  mysql:
+    container_name: vkidb
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+    ports:
+      - "3306:3306"
+
