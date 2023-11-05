@@ -8,6 +8,9 @@ import com.CihanDemir.VKI_FinalProject.repository.IUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class UserService implements IUserService {
@@ -45,5 +48,21 @@ public class UserService implements IUserService {
         //Kullanıcıya istenilen veriler gönderildi.
         CalculateVkiResponse response = new CalculateVkiResponse(request.getFirstName(), request.getLastName(), vki,log);
         return response;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return iUserRepository.findAll();
+    }
+
+    @Override
+    public User update(UUID id, User user) {
+        user.setId(id);
+        return iUserRepository.save(user);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        iUserRepository.deleteById(id);
     }
 }
