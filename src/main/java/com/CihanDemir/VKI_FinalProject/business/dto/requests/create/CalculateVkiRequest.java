@@ -1,4 +1,4 @@
-package com.CihanDemir.VKI_FinalProject.business.dto;
+package com.CihanDemir.VKI_FinalProject.business.dto.requests.create;
 
 import com.CihanDemir.VKI_FinalProject.entity.enums.Gender;
 import jakarta.persistence.EnumType;

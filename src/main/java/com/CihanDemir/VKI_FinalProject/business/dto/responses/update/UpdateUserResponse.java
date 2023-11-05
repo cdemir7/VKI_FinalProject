@@ -1,16 +1,15 @@
-package com.CihanDemir.VKI_FinalProject.business.dto;
+package com.CihanDemir.VKI_FinalProject.business.dto.responses.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// Kullanıcıya gönderilen veriler
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class CalculateVkiResponse {
+@AllArgsConstructor
+@NoArgsConstructor
+public class UpdateUserResponse {
     private String firstName;
 
     private String lastName;
