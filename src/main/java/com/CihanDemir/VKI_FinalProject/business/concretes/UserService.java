@@ -26,6 +26,7 @@ public class UserService implements IUserService {
     //Vki İşlemleri
     @Override
     public CalculateVkiResponse add(CalculateVkiRequest request) {
+        validateAddRequest(request);
         double vki = calculateVki(request.getWeight(), request.getHeight());
         String log = logYazdir(vki);
 
@@ -41,10 +42,41 @@ public class UserService implements IUserService {
         return response;
     }
 
+    @Override
+    public List<GetAllUsersResponse> getAll() {
+        return iUserRepository.findAll().stream().map(
+                user -> modelMapper.map(user, GetAllUsersResponse.class)
+        ).collect(Collectors.toList());
+    }
+
+    @Override
+    public UpdateUserResponse update(UUID id, UpdateUserRequest updateUserRequest) {
+        validateUpdateRequest(updateUserRequest);
+        User user = iUserRepository.findById(id).orElseThrow();
+        user = modelMapper.map(updateUserRequest, User.class);
+        user.setId(id);
+        double vkiValue = calculateVki(updateUserRequest.getWeight(), updateUserRequest.getHeight());
+        user.setVki(vkiValue);
+
+        iUserRepository.save(user);
+
+        UpdateUserResponse updateUserResponse = modelMapper.map(user, UpdateUserResponse.class);
+        updateUserResponse.setLog(logYazdir(vkiValue));
+        return updateUserResponse;
+    }
+
+    @Override
+    public void delete(UUID id) {
+        iUserRepository.deleteById(id);
+    }
+
+
+    // Özel Metotlar
     private double calculateVki(double weight, double height){
         double vki = weight / Math.pow(height/100, 2);
         return vki;
     }
+
     private String logYazdir(double vki){
         String log;
         if (vki >0 && vki <18.5 ){
@@ -65,30 +97,26 @@ public class UserService implements IUserService {
         return log;
     }
 
-    @Override
-    public List<GetAllUsersResponse> getAll() {
-        return iUserRepository.findAll().stream().map(
-                user -> modelMapper.map(user, GetAllUsersResponse.class)
-        ).collect(Collectors.toList());
+    private void validateAddRequest(CalculateVkiRequest request) {
+        if (request.getFirstName() == null || request.getFirstName().isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be empty");
+        }
+        if (request.getLastName() == null || request.getLastName().isEmpty()) {
+            throw new IllegalArgumentException("Last name cannot be empty");
+        }
+        if (request.getHeight() <= 0 || request.getWeight() <= 0) {
+            throw new IllegalArgumentException("Height and weight must be greater than 0");
+        }
     }
-
-    @Override
-    public UpdateUserResponse update(UUID id, UpdateUserRequest updateUserRequest) {
-        User user = iUserRepository.findById(id).orElseThrow();
-        user = modelMapper.map(updateUserRequest, User.class);
-        user.setId(id);
-        double vkiValue = calculateVki(updateUserRequest.getWeight(), updateUserRequest.getHeight());
-        user.setVki(vkiValue);
-
-        iUserRepository.save(user);
-
-        UpdateUserResponse updateUserResponse = modelMapper.map(user, UpdateUserResponse.class);
-        updateUserResponse.setLog(logYazdir(vkiValue));
-        return updateUserResponse;
-    }
-
-    @Override
-    public void delete(UUID id) {
-        iUserRepository.deleteById(id);
+    private void validateUpdateRequest(UpdateUserRequest request) {
+        if (request.getFirstName() == null || request.getFirstName().isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be empty");
+        }
+        if (request.getLastName() == null || request.getLastName().isEmpty()) {
+            throw new IllegalArgumentException("Last name cannot be empty");
+        }
+        if (request.getHeight() <= 0 || request.getWeight() <= 0) {
+            throw new IllegalArgumentException("Height and weight must be greater than 0");
+        }
     }
 }

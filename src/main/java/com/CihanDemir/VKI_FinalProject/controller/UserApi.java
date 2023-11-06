@@ -4,17 +4,13 @@ import com.CihanDemir.VKI_FinalProject.business.abstracts.IUserService;
 import com.CihanDemir.VKI_FinalProject.business.dto.requests.update.UpdateUserRequest;
 import com.CihanDemir.VKI_FinalProject.business.dto.responses.get.GetAllUsersResponse;
 import com.CihanDemir.VKI_FinalProject.business.dto.responses.update.UpdateUserResponse;
-import com.CihanDemir.VKI_FinalProject.entity.User;
 import com.CihanDemir.VKI_FinalProject.business.dto.requests.create.CalculateVkiRequest;
 import com.CihanDemir.VKI_FinalProject.business.dto.responses.create.CalculateVkiResponse;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -22,7 +18,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/user")
 public class UserApi {
     private final IUserService userService;
-
 
     @GetMapping
     public List<GetAllUsersResponse> getAll(){
