@@ -61,6 +61,15 @@ First, make sure you have the following requirements to run this project smoothl
 4. ## License
    This project is licensed under the MIT License. See the LICENSE file for more information.
 
+# POSTMAN API PersitURL
+ GET    : `localhost:8080/api/v1/user`
+ 
+ POST   : `localhost:8080/api/v1/user`
+ 
+ PUT    : `localhost:8080/api/v1/user/{id}`
+ 
+ DELETE : `localhost:8080/api/v1/user/{id}`
+
 ---
 ---
 
