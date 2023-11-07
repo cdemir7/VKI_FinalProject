@@ -24,28 +24,37 @@ Bu proje, kullanıcının vücut kitle endeksini hesaplamak ve sonuçları Docke
    [Docker Desktop Download](https://www.docker.com/products/docker-desktop/) Bu linkten Docker Desktop'ı indirin.
 
 2. ### Proje Kurulumu
-    1. `git clone https://github.com/cdemir7/VKI_FinalProject.git`
+    1. ```sh
+        git clone https://github.com/cdemir7/VKI_FinalProject.git
+       ```
    
        İndirdiğiniz klasörü Intelij Idea'da açın.
        
 
 
-    2.    `spring.datasource.url=jdbc:mysql://localhost:3306/VERITABANI_ADI`
+    4.    ```sh
+          spring.datasource.url=jdbc:mysql://localhost:3306/VERITABANI_ADI
       
-          `spring.datasource.username=KULLANICI_ADI`
+          spring.datasource.username=KULLANICI_ADI
       
-          `spring.datasource.password=PAROLA`
+          spring.datasource.password=PAROLA
+          ```
        
 
-           VERITABANI_ADI, KULLANICI_ADI ve PAROLA değerlerini projedeki `src/main/resources/application.properties` yolundaki application.properties dosyasında değiştirin.
+           VERITABANI_ADI, KULLANICI_ADI ve PAROLA değerlerini projedeki
+      ```sh
+      src/main/resources/application.properties
+      ```
+      yolundaki application.properties dosyasında değiştirin.
 
-    3. Veritabanında, application.properties dosyasındaki isimle aynı olacak şekilde veritabanı oluşturun.
+    6. Veritabanında, application.properties dosyasındaki isimle aynı olacak şekilde veritabanı oluşturun.
 
-    4. Intelij Idea'dan projeyi çalıştırın.
+    7. Intelij Idea'dan projeyi çalıştırın.
 
 
 3. ## Kullanım
-    1. `http://localhost:8080/swagger-ui/index.html#/` web tarayıcısında URL'i açın.
-      
-       Burada CRUD işlemlerini gerçekleştirebilirisiniz.
+    1. ```sh
+       http://localhost:8080/swagger-ui/index.html#/
+       ```
+       web tarayıcısında yukarıdaki URL'i açın. Burada CRUD işlemlerini gerçekleştirebilirisiniz.
 
