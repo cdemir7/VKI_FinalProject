@@ -59,5 +59,5 @@ Bu proje, kullanıcının vücut kitle endeksini hesaplamak ve sonuçları Docke
        web tarayıcısında yukarıdaki URL'i açın. Burada CRUD işlemlerini gerçekleştirebilirisiniz.
 
 4. ## Lisans
-   Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE.md` dosyasına bakın.
+   Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
 
