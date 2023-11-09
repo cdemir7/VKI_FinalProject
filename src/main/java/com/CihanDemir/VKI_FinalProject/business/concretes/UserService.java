@@ -23,7 +23,6 @@ public class UserService implements IUserService {
     private final IUserRepository iUserRepository;
     private final ModelMapper modelMapper;
 
-    //Vki İşlemleri
     @Override
     public CalculateVkiResponse add(CalculateVkiRequest request) {
         validateAddRequest(request);
@@ -70,8 +69,9 @@ public class UserService implements IUserService {
         iUserRepository.deleteById(id);
     }
 
-
     // Özel Metotlar
+
+    //Vki İşlemleri
     private double calculateVki(double weight, double height){
         double vki = weight / Math.pow(height/100, 2);
         return vki;
