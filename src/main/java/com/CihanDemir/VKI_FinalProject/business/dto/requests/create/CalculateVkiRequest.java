@@ -15,13 +15,9 @@ import lombok.Setter;
 @Setter
 public class CalculateVkiRequest {
     private String firstName;
-
     private String lastName;
-
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
     private double weight;
-
     private double height;
 }

@@ -11,10 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateUserResponse {
     private String firstName;
-
     private String lastName;
-
     private double vki;
-
     private String log;
 }

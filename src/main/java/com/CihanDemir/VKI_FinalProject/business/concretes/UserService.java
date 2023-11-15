@@ -11,7 +11,6 @@ import com.CihanDemir.VKI_FinalProject.repository.IUserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -28,26 +27,21 @@ public class UserService implements IUserService {
         validateAddRequest(request);
         double vki = calculateVki(request.getWeight(), request.getHeight());
         String log = logYazdir(vki);
-
         //Veritabanı nesnesi oluşturuldu.
         User user = new User(null, request.getFirstName(), request.getLastName(),
                 request.getGender(), request.getWeight(), request.getHeight(), vki);
-
         //Veritabanına kaydedildi.
         iUserRepository.save(user);
-
         //Kullanıcıya istenilen veriler gönderildi.
         CalculateVkiResponse response = new CalculateVkiResponse(request.getFirstName(), request.getLastName(), vki,log);
         return response;
     }
-
     @Override
     public List<GetAllUsersResponse> getAll() {
         return iUserRepository.findAll().stream().map(
                 user -> modelMapper.map(user, GetAllUsersResponse.class)
         ).collect(Collectors.toList());
     }
-
     @Override
     public UpdateUserResponse update(UUID id, UpdateUserRequest updateUserRequest) {
         validateUpdateRequest(updateUserRequest);
@@ -56,9 +50,7 @@ public class UserService implements IUserService {
         user.setId(id);
         double vkiValue = calculateVki(updateUserRequest.getWeight(), updateUserRequest.getHeight());
         user.setVki(vkiValue);
-
         iUserRepository.save(user);
-
         UpdateUserResponse updateUserResponse = modelMapper.map(user, UpdateUserResponse.class);
         updateUserResponse.setLog(logYazdir(vkiValue));
         return updateUserResponse;
@@ -70,13 +62,11 @@ public class UserService implements IUserService {
     }
 
     // Özel Metotlar
-
     //Vki İşlemleri
     private double calculateVki(double weight, double height){
         double vki = weight / Math.pow(height/100, 2);
         return vki;
     }
-
     private String logYazdir(double vki){
         String log;
         if (vki >0 && vki <18.5 ){
@@ -96,7 +86,6 @@ public class UserService implements IUserService {
         }
         return log;
     }
-
     private void validateAddRequest(CalculateVkiRequest request) {
         if (request.getFirstName() == null || request.getFirstName().isEmpty()) {
             throw new IllegalArgumentException("First name cannot be empty");

@@ -12,10 +12,7 @@ import lombok.Setter;
 @Setter
 public class CalculateVkiResponse {
     private String firstName;
-
     private String lastName;
-
     private double vki;
-
     private String log;
 }

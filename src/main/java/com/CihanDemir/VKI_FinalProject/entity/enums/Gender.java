@@ -5,6 +5,5 @@ package com.CihanDemir.VKI_FinalProject.entity.enums;
 // Ayrıca kullanıcınin girdilerini kısıtlayarak oluşacak yanlışlarının önüne geçer.
 public enum Gender {
     MALE,
-
     FEMALE,
 }

@@ -14,13 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateUserRequest {
     private String firstName;
-
     private String lastName;
-
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
     private double weight;
-
     private double height;
 }

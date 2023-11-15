@@ -5,7 +5,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
+//Nesne kopyalama işlemlerini kolaylaştırmak için oluşturulmuştur.
 @Configuration
 public class ModelMapperConfig {
     @Bean
